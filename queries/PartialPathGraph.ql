@@ -40,8 +40,8 @@
     //  }
  }
  
- module MyDataFlow = TaintTracking::Make<MyDataFlowConfiguration>;
- module MyOtherDataFlow = DataFlow::Make<MyDataFlowConfiguration>;
+ module MyDataFlow = TaintTracking::Global<MyDataFlowConfiguration>;
+ module MyOtherDataFlow = DataFlow::Global<MyDataFlowConfiguration>;
  
  signature predicate customGuardChecksSig(Guard g, Expr e, boolean branch);
  module CustomBarrierGuard<customGuardChecksSig/3 customGuardChecks> {
@@ -83,5 +83,5 @@
  import MyFlowExploration::PartialPathGraph
  
  from MyFlowExploration::PartialPathNode source, MyFlowExploration::PartialPathNode node
- where MyFlowExploration::hasPartialFlow(source, node, _) 
+ where MyFlowExploration::partialFlow(source, node, _)
  select source.getNode(), source, node, "Partial flow"

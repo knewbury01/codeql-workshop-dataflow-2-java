@@ -3,5 +3,5 @@ library: false
 name: queries
 version: 0.0.1
 dependencies:
-  codeql/java-all: 0.5.6
+  codeql/java-all: ^0.7.0
 extractor: java

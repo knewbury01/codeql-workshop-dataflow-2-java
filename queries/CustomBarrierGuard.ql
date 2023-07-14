@@ -37,7 +37,7 @@ module MyDataFlowConfiguration implements DataFlow::ConfigSig{
     }
 }
 
-module MyDataFlow = TaintTracking::Make<MyDataFlowConfiguration>;
+module MyDataFlow = TaintTracking::Global<MyDataFlowConfiguration>;
 
 // Copied signature and barrier guard from semmle/code/java/dataflow/internal/DataFlowUtil.qll
 signature predicate guardChecksSig(Guard g, Expr e, boolean branch);
@@ -74,5 +74,5 @@ module ValidatorBarrierGuard = BarrierGuard<guardChecks/3>;
 import MyDataFlow::PathGraph
 
 from MyDataFlow::PathNode source, MyDataFlow::PathNode sink
-where MyDataFlow::hasFlowPath(source, sink)
+where MyDataFlow::flowPath(source, sink)
 select sink, source, sink, "Some alert message"

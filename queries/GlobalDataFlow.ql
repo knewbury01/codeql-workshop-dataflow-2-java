@@ -44,11 +44,11 @@ module MyDataFlowConfiguration implements DataFlow::ConfigSig{
 
 // Using our configuration module we can create our own data-flow or taint-tracking module
 // that contains all we need to perform globa data flow analysis.
-module MyDataFlow = TaintTracking::Make<MyDataFlowConfiguration>;
+module MyDataFlow = TaintTracking::Global<MyDataFlowConfiguration>;
 // We can create multiple data-flow modules based on any configuration.
 // That is, we know longer have to import `semmle.code.java.dataflow.DataFlow2`,
 // or `semmle.code.java.dataflow.DataFlow3` when we want multiple configurations.
-module MyOtherDataFlow = DataFlow::Make<MyDataFlowConfiguration>;
+module MyOtherDataFlow = DataFlow::Global<MyDataFlowConfiguration>;
 
 // Here we define our guard check that is used to construct a custom `BarrierGuard`.
 // A `BarrierGuard` combines control flow with data-flow to determine if a use of a variable is safe.
@@ -79,5 +79,5 @@ import MyDataFlow::PathGraph
 // Notice that we can directly use our data-flow module in the where clause to use the `hasFlowPath` since this is
 // now a member predicate of a module and not a class.
 from MyDataFlow::PathNode source, MyDataFlow::PathNode sink
-where MyDataFlow::hasFlowPath(source, sink)
+where MyDataFlow::flowPath(source, sink)
 select sink, source, sink, "Some alert message"
