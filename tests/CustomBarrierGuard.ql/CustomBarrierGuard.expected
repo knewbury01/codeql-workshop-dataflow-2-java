@@ -2,7 +2,9 @@ edges
 | Test.java:38:23:38:38 | getData(...) : String | Test.java:40:19:40:22 | data |
 | Test.java:69:23:69:38 | getData(...) : String | Test.java:72:23:72:26 | data |
 | Test.java:87:23:87:38 | getData(...) : String | Test.java:92:23:92:26 | data |
-| Test.java:97:23:97:38 | getData(...) : String | Test.java:101:19:101:29 | stillUnsafe |
+| Test.java:97:23:97:38 | getData(...) : String | Test.java:99:66:99:69 | data : String |
+| Test.java:99:30:99:70 | concat(...) : String | Test.java:101:19:101:29 | stillUnsafe |
+| Test.java:99:66:99:69 | data : String | Test.java:99:30:99:70 | concat(...) : String |
 nodes
 | Test.java:38:23:38:38 | getData(...) : String | semmle.label | getData(...) : String |
 | Test.java:40:19:40:22 | data | semmle.label | data |
@@ -11,6 +13,8 @@ nodes
 | Test.java:87:23:87:38 | getData(...) : String | semmle.label | getData(...) : String |
 | Test.java:92:23:92:26 | data | semmle.label | data |
 | Test.java:97:23:97:38 | getData(...) : String | semmle.label | getData(...) : String |
+| Test.java:99:30:99:70 | concat(...) : String | semmle.label | concat(...) : String |
+| Test.java:99:66:99:69 | data : String | semmle.label | data : String |
 | Test.java:101:19:101:29 | stillUnsafe | semmle.label | stillUnsafe |
 subpaths
 #select
