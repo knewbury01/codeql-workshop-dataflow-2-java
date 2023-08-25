@@ -37,7 +37,7 @@ class Test {
     void test1() {
         String data = Source.getData();
 
-        Sink.sink(data);
+        Sink.sink(data); // TP
     }
 
     void test2() {
@@ -67,9 +67,9 @@ class Test {
 
     void test5() {
         String data = Source.getData();
-
+        // Incorrect validation
         if (!Validator.isValid(data)) {
-            Sink.sink(data);
+            Sink.sink(data); // TP
         }
     }
 
@@ -87,9 +87,9 @@ class Test {
         String data = Source.getData();
 
         String partOfData = data.substring(0, 5);
-
+        // Incorrect validation
         if (!Validator.isValid(partOfData)) {
-            Sink.sink(data);
+            Sink.sink(data); // TP
         }
     }
 
@@ -98,7 +98,7 @@ class Test {
 
         String stillUnsafe = SomeDependency.concat("somePrefix", data);
 
-        Sink.sink(stillUnsafe);
+        Sink.sink(stillUnsafe); // TP
         
     }
 }
